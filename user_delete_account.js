@@ -1,30 +1,11 @@
 /**
  * Commuter Web Account Deletion Controller
  * Dual Mode: Google Sign-In Account (Gmail OTP) + Standard Account (Password + OTP)
+ * Connects directly to external tunneling backend
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-
-  const API_URL = "https://larganasaanka.serveocontentuser.com/larganasaanka/api/user_security_api.php";
-
-  fetch(API_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "serveo-skip-browser-warning": "true", // Bypasses the Serveo warning screen
-    },
-    body: JSON.stringify({
-      action: "delete_account",
-      user_id: 123,
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  const API_URL = "https://larganasaanka.serveousercontent.com/larganasaanka/api/user_security_api.php";
 
   // Tab Switcher Elements
   const tabBtnGoogle = document.getElementById("tabBtnGoogle");
@@ -55,19 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnRequestGoogleOtp = document.getElementById("btnRequestGoogleOtp");
 
   const googleOtpVerifyForm = document.getElementById("googleOtpVerifyForm");
-  const displayGoogleMaskedEmail = document.getElementById(
-    "displayGoogleMaskedEmail",
-  );
+  const displayGoogleMaskedEmail = document.getElementById("displayGoogleMaskedEmail");
   const inputGoogleOtpCode = document.getElementById("inputGoogleOtpCode");
   const googleOtpTimerText = document.getElementById("googleOtpTimerText");
-  const googleResendCountdownText = document.getElementById(
-    "googleResendCountdownText",
-  );
+  const googleResendCountdownText = document.getElementById("googleResendCountdownText");
   const btnResendGoogleOtp = document.getElementById("btnResendGoogleOtp");
   const btnBackToGoogleStep1 = document.getElementById("btnBackToGoogleStep1");
-  const btnConfirmDeleteGoogle = document.getElementById(
-    "btnConfirmDeleteGoogle",
-  );
+  const btnConfirmDeleteGoogle = document.getElementById("btnConfirmDeleteGoogle");
 
   // Global Success Elements
   const deletionSuccessCard = document.getElementById("deletionSuccessCard");
@@ -167,16 +142,13 @@ document.addEventListener("DOMContentLoaded", () => {
         startGoogleResendCooldown(now + 30 * 1000);
         startGoogleValidityCountdown(now + 300 * 1000);
 
-        showToast(
-          result.message || "Code sent to your Gmail inbox.",
-          "success",
-        );
+        showToast(result.message || "Code sent to your Gmail inbox.", "success");
       } else {
         showToast(result.message || "Email address not found.", "error");
       }
     } catch (err) {
       console.error("Google OTP error:", err);
-      showToast("Unable to reach the security server.", "error");
+      showToast("Unable to reach the security server. Check if your tunnel is running.", "error");
     } finally {
       btnRequestGoogleOtp.disabled = false;
       btnRequestGoogleOtp.innerHTML = originalBtnHtml;
@@ -242,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btnConfirmDeleteGoogle.innerHTML = `<span class="material-symbols-outlined" style="animation: spin 1s infinite linear;">sync</span> Purging...`;
 
     try {
-      // Verify OTP
+      // Step A: Verify OTP
       const verifyRes = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -256,16 +228,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const verifyResult = await verifyRes.json();
       if (!verifyResult.success) {
-        showToast(
-          verifyResult.message || "Invalid verification code.",
-          "error",
-        );
+        showToast(verifyResult.message || "Invalid verification code.", "error");
         btnConfirmDeleteGoogle.disabled = false;
         btnConfirmDeleteGoogle.innerHTML = originalBtnHtml;
         return;
       }
 
-      // Execute Delete
+      // Step B: Execute Deletion
       const deleteRes = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -318,10 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
     clearInterval(googleValidityInterval);
 
     function tick() {
-      const totalSec = Math.max(
-        0,
-        Math.floor((targetTimestamp - Date.now()) / 1000),
-      );
+      const totalSec = Math.max(0, Math.floor((targetTimestamp - Date.now()) / 1000));
       const minutes = Math.floor(totalSec / 60);
       const seconds = totalSec % 60;
 
@@ -384,11 +350,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         showToast(result.message || "Verification code dispatched.", "success");
       } else {
-        showToast(
-          result.message ||
-            "Verification failed. Check your email and password.",
-          "error",
-        );
+        showToast(result.message || "Verification failed. Check your email and password.", "error");
       }
     } catch (err) {
       console.error("Communication error:", err);
@@ -475,10 +437,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const verifyResult = await verifyRes.json();
 
       if (!verifyResult.success) {
-        showToast(
-          verifyResult.message || "Invalid or expired verification code.",
-          "error",
-        );
+        showToast(verifyResult.message || "Invalid or expired verification code.", "error");
         btnConfirmDelete.disabled = false;
         btnConfirmDelete.innerHTML = originalBtnHtml;
         return;
@@ -503,10 +462,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(validityInterval);
         renderDeletionSuccess();
       } else {
-        showToast(
-          deleteResult.message || "Failed to purge account data.",
-          "error",
-        );
+        showToast(deleteResult.message || "Failed to purge account data.", "error");
         btnConfirmDelete.disabled = false;
         btnConfirmDelete.innerHTML = originalBtnHtml;
       }
@@ -540,10 +496,7 @@ document.addEventListener("DOMContentLoaded", () => {
     clearInterval(validityInterval);
 
     function tick() {
-      const totalSec = Math.max(
-        0,
-        Math.floor((targetTimestamp - Date.now()) / 1000),
-      );
+      const totalSec = Math.max(0, Math.floor((targetTimestamp - Date.now()) / 1000));
       const minutes = Math.floor(totalSec / 60);
       const seconds = totalSec % 60;
 
