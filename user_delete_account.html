@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Account & Data — Larga Na, Saan Ka?</title>
+
+    <!-- Google Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="user_delete_account.css">
+</head>
+<body>
+
+    <!-- Modern Toast Notification -->
+    <div id="toastNotification" class="toast-notification">
+        <span class="material-symbols-outlined toast-icon" id="toastIcon">error</span>
+        <span id="toastMessage">Notification message</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="public-navbar">
+        <div class="nav-container">
+            <div class="brand-group">
+                <a href="privacy_policy.html" class="brand-identity">
+                    <span class="material-symbols-outlined brand-icon">directions_bus</span>
+                    <div class="brand-text-block">
+                        <span class="brand-title">Larga Na, Saan Ka?</span>
+                        <span class="brand-subtitle">Public Transit Portal</span>
+                    </div>
+                </a>
+            </div>
+            <div class="nav-actions">
+                <a href="privacy_policy.html" class="nav-btn-secondary">
+                    <span class="material-symbols-outlined">policy</span>
+                    <span>Privacy Policy</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="delete-page-wrapper">
+        <div class="delete-card">
+
+            <!-- Card Header -->
+            <div class="delete-header">
+                <div class="header-icon-badge">
+                    <span class="material-symbols-outlined">delete_forever</span>
+                </div>
+                <h1 class="header-title">Commuter Account Deletion</h1>
+                <p class="header-subtitle">
+                    Request permanent removal of your account, passenger discount profile, and personal transit data.
+                </p>
+            </div>
+
+            <!-- Mandatory Policy Scope Disclosure -->
+            <div class="scope-disclosure-box">
+                <h3 class="disclosure-title">
+                    <span class="material-symbols-outlined">info</span>
+                    What will happen when your account is deleted:
+                </h3>
+                <ul class="disclosure-list">
+                    <li>Your <strong>full name, email address, password hash, and profile picture</strong> are permanently purged from the database.</li>
+                    <li>Your <strong>demographic classification and fare discount standing</strong> (Student, Senior, PWD) are revoked immediately.</li>
+                    <li>Any previously submitted <strong>commuter feedback or transit incident reports</strong> will be anonymized for public transit record auditing.</li>
+                    <li><strong>This operation is permanent and cannot be undone.</strong></li>
+                </ul>
+            </div>
+
+            <!-- ACCOUNT TYPE TABS: Google Account vs Standard Email/Password Account -->
+            <div class="auth-type-tabs" id="authTypeTabs">
+                <button type="button" class="tab-btn active" id="tabBtnGoogle">
+                    <svg class="google-svg" viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.66-5.17 3.66-9.12z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.27v3.13C3.26 21.36 7.35 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.57H1.27C.46 8.19 0 10.04 0 12s.46 3.81 1.27 5.43l4.01-3.14z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.26 2.64 1.27 6.57l4.01 3.14c.95-2.83 3.6-4.96 6.72-4.96z"/>
+                    </svg>
+                    <span>Google Sign-In Account</span>
+                </button>
+                <button type="button" class="tab-btn" id="tabBtnStandard">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">mail_lock</span>
+                    <span>Standard Account</span>
+                </button>
+            </div>
+
+            <!-- =============================================================
+                 PANE A: GOOGLE ACCOUNT DELETION (PASSWORDLESS GMAIL OTP)
+                 ============================================================= -->
+            <div id="paneGoogle" class="auth-pane active">
+                
+                <!-- Google Step 1: Input Gmail -->
+                <form id="googleOtpRequestForm" class="step-form" autocomplete="off">
+                    <div class="step-label-pill">Google Account: Email Ownership Verification</div>
+                    <p class="pane-instruction">
+                        Because accounts registered via Google Sign-In do not use a password, we verify account ownership by dispatching a One-Time Password (OTP) to your registered Gmail address.
+                    </p>
+
+                    <div class="form-group">
+                        <label for="inputGoogleEmail">Your Registered Google / Gmail Address</label>
+                        <div class="input-container">
+                            <span class="material-symbols-outlined field-icon">mail</span>
+                            <input
+                                type="email"
+                                id="inputGoogleEmail"
+                                name="email"
+                                placeholder="commuter@gmail.com"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary-action" id="btnRequestGoogleOtp">
+                        <span>Send Security OTP to Gmail</span>
+                        <span class="material-symbols-outlined">send</span>
+                    </button>
+                </form>
+
+                <!-- Google Step 2: Code verification & permanent deletion -->
+                <form id="googleOtpVerifyForm" class="step-form" style="display: none;" autocomplete="off">
+                    <div class="step-label-pill">Google Account: Confirm Security Code</div>
+
+                    <div class="otp-sent-banner">
+                        <span class="material-symbols-outlined">mark_email_read</span>
+                        <div>
+                            Security verification code sent to your Gmail:
+                            <strong id="displayGoogleMaskedEmail" class="masked-email-text">co******@gmail.com</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="otp-label-row">
+                            <label for="inputGoogleOtpCode">6-Digit Verification Code</label>
+                            <span class="expiry-counter" id="googleOtpTimerText">Expires in: 05:00</span>
+                        </div>
+                        <div class="input-container">
+                            <span class="material-symbols-outlined field-icon">pin</span>
+                            <input
+                                type="text"
+                                id="inputGoogleOtpCode"
+                                maxlength="6"
+                                placeholder="• • • • • •"
+                                autocomplete="off"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div class="resend-row">
+                        <span id="googleResendCountdownText">Resend available in 30s</span>
+                        <button type="button" class="btn-resend-otp" id="btnResendGoogleOtp" disabled>Resend Code</button>
+                    </div>
+
+                    <div class="action-buttons-group">
+                        <button type="button" class="btn-secondary-action" id="btnBackToGoogleStep1">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                            <span>Back</span>
+                        </button>
+                        <button type="submit" class="btn-danger-action" id="btnConfirmDeleteGoogle">
+                            <span class="material-symbols-outlined">delete_forever</span>
+                            <span>Permanently Delete</span>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- =============================================================
+                 PANE B: STANDARD ACCOUNT DELETION (EMAIL + PASSWORD + OTP)
+                 ============================================================= -->
+            <div id="paneStandard" class="auth-pane" style="display: none;">
+                
+                <!-- STEP 1: Enter Email & Password -->
+                <form id="step1Form" class="step-form" autocomplete="off">
+                    <div class="step-label-pill">Step 1 of 2: Verify Credentials</div>
+
+                    <div class="form-group">
+                        <label for="inputEmail">Registered Email Address</label>
+                        <div class="input-container">
+                            <span class="material-symbols-outlined field-icon">mail</span>
+                            <input
+                                type="email"
+                                id="inputEmail"
+                                name="email"
+                                placeholder="commuter@example.com"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword">Account Password</label>
+                        <div class="input-container">
+                            <span class="material-symbols-outlined field-icon">lock</span>
+                            <input
+                                type="password"
+                                id="inputPassword"
+                                name="password"
+                                placeholder="••••••••••••"
+                                required
+                            />
+                            <button type="button" class="btn-toggle-pwd" id="btnTogglePassword" title="Show or hide password" tabindex="-1">
+                                <span class="material-symbols-outlined" id="pwdToggleIcon">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary-action" id="btnRequestOtp">
+                        <span>Verify Credentials & Send OTP</span>
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </form>
+
+                <!-- STEP 2: Verify OTP & Authorize Deletion -->
+                <form id="step2Form" class="step-form" style="display: none;" autocomplete="off">
+                    <div class="step-label-pill">Step 2 of 2: Confirm One-Time Password</div>
+
+                    <div class="otp-sent-banner">
+                        <span class="material-symbols-outlined">mark_email_read</span>
+                        <div>
+                            A 6-digit security verification code was dispatched to:
+                            <strong id="displayMaskedEmail" class="masked-email-text">co******@gmail.com</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="otp-label-row">
+                            <label for="inputOtpCode">6-Digit Verification Code</label>
+                            <span class="expiry-counter" id="otpTimerText">Expires in: 05:00</span>
+                        </div>
+                        <div class="input-container">
+                            <span class="material-symbols-outlined field-icon">pin</span>
+                            <input
+                                type="text"
+                                id="inputOtpCode"
+                                name="otp"
+                                maxlength="6"
+                                placeholder="• • • • • •"
+                                autocomplete="off"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div class="resend-row">
+                        <span id="resendCountdownText">You can request a new code in 30s</span>
+                        <button type="button" class="btn-resend-otp" id="btnResendOtp" disabled>Resend Code</button>
+                    </div>
+
+                    <div class="action-buttons-group">
+                        <button type="button" class="btn-secondary-action" id="btnBackToStep1">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                            <span>Back</span>
+                        </button>
+                        <button type="submit" class="btn-danger-action" id="btnConfirmDelete">
+                            <span class="material-symbols-outlined">delete_forever</span>
+                            <span>Permanently Delete Account</span>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- SUCCESS STATE: Deletion Complete -->
+            <div id="deletionSuccessCard" class="success-card" style="display: none;">
+                <div class="success-icon-badge">
+                    <span class="material-symbols-outlined">check_circle</span>
+                </div>
+                <h2 class="success-title">Account Deleted Successfully</h2>
+                <p class="success-desc">
+                    Your commuter account and personal data have been purged from our database in compliance with the Philippine Data Privacy Act of 2012 and Google Play policies.
+                </p>
+                <div class="success-actions">
+                    <a href="privacy_policy.html" class="btn-primary-action">
+                        <span>Return to Privacy Policy</span>
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer Compliance Notice -->
+            <div class="card-footer-meta">
+                <span class="material-symbols-outlined">verified_user</span>
+                <span>In compliance with Republic Act No. 10173 & Google Play User Data Policy</span>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="user_delete_account.js"></script>
+</body>
+</html>

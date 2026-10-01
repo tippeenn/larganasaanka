@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Larga Na, Saan Ka?</title>
+
+    <!-- Google Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="privacy_policy.css">
+</head>
+<body>
+
+    <!-- Reading Progress Indicator -->
+    <div id="scrollProgressBar" class="scroll-progress-bar"></div>
+
+    <!-- Navigation Header -->
+    <header class="public-navbar">
+        <div class="nav-container">
+            <div class="brand-group">
+                <div class="brand-identity">
+                    <span class="material-symbols-outlined brand-icon">directions_bus</span>
+                    <div class="brand-text-block">
+                        <span class="brand-title">Larga Na, Saan Ka?</span>
+                        <span class="brand-subtitle">Public Transit Portal</span>
+                    </div>
+                </div>
+                <span class="official-badge">Official Policy</span>
+            </div>
+            <div class="nav-actions">
+                <a href="user_delete_account.html" class="btn-delete-nav" title="Submit Account & Data Deletion Request">
+                    <span class="material-symbols-outlined">delete_forever</span>
+                    <span>Delete Account</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Header -->
+    <section class="policy-hero">
+        <div class="hero-inner">
+            <div class="compliance-capsule">
+                <span class="material-symbols-outlined">verified_user</span>
+                <span>Republic Act No. 10173 & Google Play Policy Compliant</span>
+            </div>
+            <h1 class="hero-title">Privacy Policy</h1>
+            <p class="hero-subtitle">
+                Learn how Larga Na Saan Ka collects, utilizes, and protects your personal and location data during transit route planning and commuter navigation.
+            </p>
+            <div class="date-tags-row">
+                <span class="date-badge">Effective Date: October 1, 2026</span>
+                <span class="date-badge">Last Updated: October 1, 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container with Sticky Table of Contents -->
+    <main class="policy-wrapper">
+        <div class="policy-grid">
+            
+            <!-- Sticky Sidebar: Table of Contents -->
+            <aside class="toc-sidebar">
+                <div class="toc-card">
+                    <h3 class="toc-title">
+                        <span class="material-symbols-outlined">list_alt</span>
+                        Table of Contents
+                    </h3>
+                    <nav class="toc-nav" id="tocNav">
+                        <a href="#section-overview" class="toc-link active">Overview</a>
+                        <a href="#section-collection" class="toc-link">1. Information We Collect</a>
+                        <a href="#section-usage" class="toc-link">2. How We Use Information</a>
+                        <a href="#section-third-party" class="toc-link">3. Third-Party Integrations</a>
+                        <a href="#section-security" class="toc-link">4. Security & Retention</a>
+                        <a href="#section-deletion" class="toc-link">5. Account Deletion Rights</a>
+                        <a href="#section-children" class="toc-link">6. Children's Privacy</a>
+                        <a href="#section-changes" class="toc-link">7. Policy Changes</a>
+                        <a href="#section-contact" class="toc-link">8. Contact Information</a>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- Document Content Body -->
+            <article class="policy-content">
+                
+                <!-- Overview -->
+                <section id="section-overview" class="policy-card">
+                    <div class="card-lead-badge">Introduction</div>
+                    <p class="lead-text">
+                        This Privacy Policy explains how <strong>Larga Na Saan Ka</strong> ("we," "our," or "the App") collects, uses, processes, and protects your personal data when you use our mobile application and related web services. We are committed to maintaining the confidentiality, integrity, and security of your personal information in compliance with the <strong>Philippine Data Privacy Act of 2012 (Republic Act No. 10173)</strong> and <strong>Google Play Developer Program Policies</strong>.
+                    </p>
+                </section>
+
+                <!-- Section 1: Information We Collect -->
+                <section id="section-collection" class="policy-card">
+                    <div class="section-header">
+                        <span class="section-number">01</span>
+                        <h2>Information We Collect</h2>
+                    </div>
+                    <p class="section-desc">
+                        We collect only the data necessary to provide regional public utility vehicle (PUV) route planning, fare estimation, augmented reality (AR) navigation, and commuter account services in San Jose del Monte, Bulacan.
+                    </p>
+
+                    <!-- A. Personal Account Info -->
+                    <div class="sub-article">
+                        <h3 class="sub-article-title">
+                            <span class="material-symbols-outlined">account_circle</span>
+                            A. Personal Account Information
+                        </h3>
+                        <ul class="policy-bullets">
+                            <li>
+                                <strong>Registration & Profile Details:</strong> Full name, display name/nickname, email address, password, and profile avatar (optional).
+                            </li>
+                            <li>
+                                <strong>Demographic & Commuter Classification:</strong> Birth date, computed age, residency classification (Local Resident vs. Tourist/Visitor), and passenger privilege category (Regular, Student, Senior Citizen, Person with Disability) used strictly to compute legally mandated fare discounts under Philippine transport regulations.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- B. Location Data -->
+                    <div class="sub-article">
+                        <h3 class="sub-article-title">
+                            <span class="material-symbols-outlined">location_on</span>
+                            B. Location Data
+                        </h3>
+                        <ul class="policy-bullets">
+                            <li>
+                                <strong>Precise & Approximate Location:</strong> We access your device’s GPS coordinates via <span class="spec-badge">ACCESS_FINE_LOCATION</span> and <span class="spec-badge">ACCESS_COARSE_LOCATION</span> to determine your origin point, pinpoint nearby loading areas and tricycle terminals, compute walking legs, and track live in-transit progress.
+                            </li>
+                            <li>
+                                <strong>Foreground Service Location:</strong> When you actively start a navigation trip, our background-capable foreground service (<span class="code-badge">TransitNavigationService</span> with <span class="spec-badge">FOREGROUND_SERVICE_LOCATION</span>) tracks your GPS progress even when the app is minimized or the screen is turned off. This is strictly used to deliver proximity arrival notifications (e.g., "Para po!" drop-off notices). A persistent, non-dismissible system notification is always displayed while this service is running, and you can terminate it at any time.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- C. Camera and Sensor Data -->
+                    <div class="sub-article">
+                        <h3 class="sub-article-title">
+                            <span class="material-symbols-outlined">photo_camera</span>
+                            C. Camera and Sensor Data
+                        </h3>
+                        <ul class="policy-bullets">
+                            <li>
+                                <strong>Camera Access:</strong> Requested via <span class="spec-badge">android.permission.CAMERA</span> exclusively for the interactive Geo-AR Guidance feature to project real-time directional pins and terminal overlays onto your camera preview.
+                            </li>
+                            <li>
+                                <strong>Zero Cloud Storage for Camera Feeds:</strong> Video frames and camera feeds are processed in real-time on-device memory and are never recorded, streamed, saved, or uploaded to our servers.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- D. Photos and Media Storage -->
+                    <div class="sub-article">
+                        <h3 class="sub-article-title">
+                            <span class="material-symbols-outlined">image</span>
+                            D. Photos and Media Storage
+                        </h3>
+                        <ul class="policy-bullets">
+                            <li>
+                                <strong>Uploaded Images:</strong> When you voluntarily update your profile photo or attach photo proof to a transit incident report/feedback submission (<span class="code-badge">activity_feedback.xml</span>), the selected photo is uploaded to our secure database server. We do not scan or read your broader device photo library.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- E. Technical & Usage Data -->
+                    <div class="sub-article">
+                        <h3 class="sub-article-title">
+                            <span class="material-symbols-outlined">terminal</span>
+                            E. Technical & Usage Data
+                        </h3>
+                        <ul class="policy-bullets">
+                            <li>
+                                <strong>App Logs & Device Information:</strong> IP address, network connection status, device model, operating system version, and system error crash logs used solely for diagnosing bugs and maintaining database connectivity.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 2: How We Use Information -->
+                <section id="section-usage" class="policy-card">
+                    <div class="section-header">
+                        <span class="section-number">02</span>
+                        <h2>How We Use Your Information</h2>
+                    </div>
+                    <p class="section-desc">We process collected information solely for the following legitimate operational purposes:</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-box">
+                            <span class="material-symbols-outlined feature-icon">alt_route</span>
+                            <h4>Transit Navigation & Guidance</h4>
+                            <p>Matching commuter origins and destinations to registered PUV routes, computing multi-leg transfers, and generating walking polylines.</p>
+                        </div>
+                        <div class="feature-box">
+                            <span class="material-symbols-outlined feature-icon">payments</span>
+                            <h4>Fare Calculation</h4>
+                            <p>Computing base rates and distance-based fare increments tailored to your discount classification (Student, Senior, PWD).</p>
+                        </div>
+                        <div class="feature-box">
+                            <span class="material-symbols-outlined feature-icon">notifications_active</span>
+                            <h4>Deboarding Alerts</h4>
+                            <p>Triggering real-time proximity alerts as you approach designated PUV drop-off points.</p>
+                        </div>
+                        <div class="feature-box">
+                            <span class="material-symbols-outlined feature-icon">report_problem</span>
+                            <h4>Operator & Incident Management</h4>
+                            <p>Allowing commuters to report vehicle conditions, route deviations, or service issues directly to transport cooperatives and administrators.</p>
+                        </div>
+                        <div class="feature-box">
+                            <span class="material-symbols-outlined feature-icon">shield</span>
+                            <h4>Account Administration</h4>
+                            <p>Managing your commuter profile, processing password resets, and preventing fraudulent or abusive activity.</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-callout">
+                        <span class="material-symbols-outlined callout-icon">gavel</span>
+                        <div>
+                            <strong>No Sale of Personal Data:</strong> We do not sell, rent, monetize, or trade your personal data or location history with third-party advertisers or data brokers.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Third-Party Integrations -->
+                <section id="section-third-party" class="policy-card">
+                    <div class="section-header">
+                        <span class="section-number">03</span>
+                        <h2>Third-Party Integrations & Processors</h2>
+                    </div>
+                    <p class="section-desc">To deliver mapping and routing functionality, the App communicates with the following external services:</p>
+
+                    <div class="table-container">
+                        <table class="policy-table">
+                            <thead>
+                                <tr>
+                                    <th>Service Provider</th>
+                                    <th>Purpose</th>
+                                    <th>Data Transmitted</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>OpenStreetMap & Leaflet</strong></td>
+                                    <td>Used to render map tiles.</td>
+                                    <td>No personal account information is shared.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Project OSRM</strong></td>
+                                    <td>Computes pedestrian walking paths between stations and street coordinates.</td>
+                                    <td>Only raw geographic coordinates are sent to routing endpoints.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Google Play Services</strong></td>
+                                    <td>Platform compatibility and Google Single Sign-On (if selected).</td>
+                                    <td>Authentication credentials according to Google’s OAuth protocols.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Section 4: Data Security and Retention -->
+                <section id="section-security" class="policy-card">
+                    <div class="section-header">
+                        <span class="section-number">04</span>
+                        <h2>Data Security & Retention</h2>
+                    </div>
+                    <p>
+                        <strong>Encryption in Transit:</strong> All communications between the mobile application and our database servers are secured using cryptographic protocols (HTTPS / SSL / TLS).
+                    </p>
+                    <p>
+                        <strong>Storage Security:</strong> Passwords are salted and hashed before database storage. Uploaded feedback images and profile data are stored in access-restricted directories.
+                    </p>
+
+                    <h3 class="subsection-title">Retention Schedule</h3>
+                    <div class="timeline-list">
+                        <div class="timeline-item">
+                            <span class="material-symbols-outlined timeline-icon">person</span>
+                            <div class="timeline-text">
+                                <strong>Account Data:</strong> Retained for the lifetime of your commuter account.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="material-symbols-outlined timeline-icon">timer</span>
+                            <div class="timeline-text">
+                                <strong>Transit Navigation Logs:</strong> Ephemeral GPS coordinates used during live route guidance are deleted from volatile memory once the route session is finished.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="material-symbols-outlined timeline-icon">history_toggle_off</span>
+                            <div class="timeline-text">
+                                <strong>Feedback Reports:</strong> Retained for up to twelve (12) months for administrative review and transport cooperative auditing, after which they are purged.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 5: Account Deletion and User Data Rights -->
+                <section id="section-deletion" class="policy-card card-emphasis">
+                    <div class="section-header">
+                        <span class="section-number">05</span>
+                        <h2>Account Deletion & User Data Rights</h2>
+                    </div>
+                    <p class="section-desc">
+                        Under the Philippine Data Privacy Act of 2012 and Google Play's User Data Policy, you have the right to access, rectify, and permanently delete your personal information.
+                    </p>
+
+                    <div class="deletion-methods-grid">
+                        <div class="deletion-method-box">
+                            <span class="material-symbols-outlined method-icon">smartphone</span>
+                            <h4>In-App Account Deletion</h4>
+                            <ol class="step-list">
+                                <li>Open the <strong>Settings</strong> tab.</li>
+                                <li>Scroll to the <strong>Security</strong> section.</li>
+                                <li>Tap <strong>Delete Account</strong> and confirm your credentials.</li>
+                            </ol>
+                        </div>
+
+                        <div class="deletion-method-box">
+                            <span class="material-symbols-outlined method-icon">public</span>
+                            <h4>Web-Based Deletion Request</h4>
+                            <p>
+                                If you do not have the app installed, you can submit an account and data deletion request via our public web portal:
+                            </p>
+                            <a href="user_delete_account.html" class="portal-link-btn">
+                                <span>Go to Deletion Portal</span>
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </a>
+                            <div class="url-display">larganasaanka.serveousercontent.com/larganasaanka/user_delete_account.html</div>
+                        </div>
+                    </div>
+
+                    <div class="consequences-box">
+                        <h4>What Happens Upon Account Deletion:</h4>
+                        <ul class="policy-bullets">
+                            <li>Your name, email address, password hash, demographic classification, and profile picture are immediately and permanently removed from our active database.</li>
+                            <li>Any unresolved user feedback tickets submitted under your account are anonymized.</li>
+                            <li><strong>Deletion is irreversible.</strong></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 6: Children's Privacy -->
+                <section id="section-children" class="policy-card">
+                    <div class="section-header">
+                        <span class="section-number">06</span>
+                        <h2>Children's Privacy</h2>
+                    </div>
+                    <p>
+                        Larga Na Saan Ka is designed for general commuter use and is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13 without verified parental consent. If we discover that personal data from a child under 13 has been collected without authorization, we will delete that information immediately.
+                    </p>
+                </section>
+
+                <!-- Section 7: Changes to This Privacy Policy -->
+                <section id="section-changes" class="policy-card">
+                    <div class="section-header">
+                        <span class="section-number">07</span>
+                        <h2>Changes to This Privacy Policy</h2>
+                    </div>
+                    <p>
+                        We may update this Privacy Policy periodically to reflect changes in transport regulations, system features, or Google Play policy updates. We will notify users of material changes via an in-app notice or dashboard announcement before the changes take effect.
+                    </p>
+                </section>
+
+                <!-- Section 8: Contact Information -->
+                <section id="section-contact" class="policy-card">
+                    <div class="section-header">
+                        <span class="section-number">08</span>
+                        <h2>Contact Information</h2>
+                    </div>
+                    <p class="section-desc">
+                        If you have questions, concerns, or requests regarding this Privacy Policy or your rights under the Data Privacy Act of 2012, contact our Data Protection Officer / Development Team:
+                    </p>
+
+                    <div class="contact-details-card">
+                        <div class="contact-row">
+                            <span class="material-symbols-outlined contact-icon">app_shortcut</span>
+                            <div>
+                                <small>App Name</small>
+                                <strong>Larga Na Saan Ka</strong>
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <span class="material-symbols-outlined contact-icon">badge</span>
+                            <div>
+                                <small>Developer / Entity</small>
+                                <strong>Larga Na Saan Ka Development Team</strong>
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <span class="material-symbols-outlined contact-icon">location_on</span>
+                            <div>
+                                <small>Jurisdiction</small>
+                                <strong>San Jose del Monte, Bulacan, Philippines</strong>
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <span class="material-symbols-outlined contact-icon">mail</span>
+                            <div>
+                                <small>Official Email Address</small>
+                                <a href="mailto:larganasaanka@gmail.com" class="contact-email-link">larganasaanka@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Public Footer -->
+    <footer class="public-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 Larga Na Saan Ka Development Team. All rights reserved.</p>
+            <p class="footer-subtext">San Jose Del Monte Public Transit Management System &bull; Compliant with RA 10173</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button type="button" id="btnBackToTop" class="btn-back-to-top" title="Back to top" aria-label="Back to top">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="privacy_policy.js"></script>
+</body>
+</html>
