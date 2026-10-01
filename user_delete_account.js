@@ -5,7 +5,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const API_URL = "https://larganasaanka.serveo.net/larganasaanka/api/user_security_api.php";
+  const API_URL = "https://larganasaanka.serveocontentuser.com/larganasaanka/api/user_security_api.php";
 
   fetch(API_URL, {
     method: "POST",
